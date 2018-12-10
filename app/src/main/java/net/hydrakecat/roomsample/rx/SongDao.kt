@@ -1,14 +1,13 @@
 package net.hydrakecat.roomsample.rx
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Update
+import androidx.room.*
 import io.reactivex.Completable
+import io.reactivex.Maybe
 import io.reactivex.Single
-import net.hydrakecat.roomsample.views.Song
 
+@Dao
 interface SongDao {
-  @Insert
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
   fun insert(song: Song): Completable
 
   @Update
@@ -16,4 +15,7 @@ interface SongDao {
 
   @Delete
   fun delete(song: Song): Completable
+
+  @Query("SELECT * FROM Song WHERE id = :id")
+  fun find(id: Long): Maybe<Song>
 }
