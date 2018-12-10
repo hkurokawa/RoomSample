@@ -2,8 +2,6 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -41,8 +39,6 @@ dependencies {
   implementation "androidx.room:room-rxjava2:$room_version"
   implementation "androidx.room:room-coroutines:$room_version"
   kapt "androidx.room:room-compiler:$room_version"
-  annotationProcessor "com.google.auto.value:auto-value:1.6.2"
-  api 'com.google.auto.value:auto-value-annotations:1.6.2'
   testImplementation "androidx.room:room-testing:$room_version"
   testImplementation 'junit:junit:4.12'
   testImplementation "org.robolectric:robolectric:4.0.2"
